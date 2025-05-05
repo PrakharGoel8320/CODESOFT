@@ -1,3 +1,6 @@
+# Simple Calculator Program
+# This program is a simple calculator that performs basic arithmetic operations.
+
 def add(a,b): # Function to add two numbers.
     return (a+b)
 
