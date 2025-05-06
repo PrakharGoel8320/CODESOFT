@@ -65,4 +65,5 @@ def main():  # Main function to run the calculator.
             print("Goodbye!")
             break
         
-main()  # Call the main function to run the calculator.
+if __name__ == "__main__":  # Check if the script is being run directly.
+    main()  # Call the main function to run the calculator.
