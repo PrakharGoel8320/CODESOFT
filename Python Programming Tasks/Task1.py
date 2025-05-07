@@ -1,7 +1,9 @@
 # To-Do List App Program.This program allows users to create, view, mark as completed, delete, and filter tasks. It also saves the tasks to a file and loads them when the program starts.
 
 def create_task(tasks): # Function to create a new task.
+    
     try:
+        
         name=input("Enter task name: ")
         number=int(input("Enter task number: "))
         description=input("Enter task description: ")
@@ -9,13 +11,16 @@ def create_task(tasks): # Function to create a new task.
         priority=input("Enter task priority (High/Medium/Low): ")
         
         for task in tasks: # Check for duplicates by task number
+            
             if task["Task_number"] == number:
+                
                 print("A task with this number already exists. Please enter a unique task number.")
                 return  # Exit without saving
         
     except ValueError:
+        
         print("Invalid Input! Please enter valid values.")
-        main() # Call the main function to restart the program.
+        return # Exit the function
         
     task={
         "Task_name": name,
