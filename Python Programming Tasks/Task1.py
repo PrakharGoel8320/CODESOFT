@@ -9,17 +9,20 @@ def create_task(tasks): # Function to create a new task.
         description=input("Enter task description: ")
         duedate=input("Enter task due date (YYYY-MM-DD): ")
         priority=input("Enter task priority (High/Medium/Low): ")
+        print("\n")
         
         for task in tasks: # Check for duplicates by task number
             
             if task["Task_number"] == number:
                 
                 print("A task with this number already exists. Please enter a unique task number.")
+                print("\n")
                 return  # Exit without saving
         
     except ValueError:
         
         print("Invalid Input! Please enter valid values.")
+        print("\n")
         return # Exit the function
         
     task={
@@ -41,6 +44,7 @@ def create_task(tasks): # Function to create a new task.
             f.write(line) # Write the task details to the file.
     
     print("Task saved successfully!")
+    print("\n")
 
 
 def view_task(tasks): # Function to view all tasks.
@@ -48,10 +52,12 @@ def view_task(tasks): # Function to view all tasks.
     if len(tasks) == 0:
        
         print("No tasks available.")
+        print("\n")
     
     else:
        
         print("Your tasks are:")
+        print("\n")
         
         for i in tasks:
            
@@ -67,6 +73,7 @@ def view_task(tasks): # Function to view all tasks.
 def task_completed(tasks): # Function to mark a task as completed.
     
     task_number = int(input("Enter the task number to mark as completed: "))
+    print("\n")
     
     found = False
     
@@ -76,6 +83,7 @@ def task_completed(tasks): # Function to mark a task as completed.
            
             i["Task_completed"] = True
             print("Task marked as completed!")
+            print("\n")
             
             found = True
             
@@ -84,6 +92,7 @@ def task_completed(tasks): # Function to mark a task as completed.
     if not found:
         
         print("Task not found! Enter a valid task number.")
+        print("\n")
     
     with open("tasksfile.txt", "w") as f:
         
@@ -96,6 +105,7 @@ def task_completed(tasks): # Function to mark a task as completed.
 def delete_task(tasks): # Function to delete a task.
     
     task_number = int(input("Enter the task number to delete: "))
+    print("\n")
     
     for i in tasks:
         
@@ -103,11 +113,13 @@ def delete_task(tasks): # Function to delete a task.
             
             tasks.remove(i)
             print("Task deleted successfully!")
+            print("\n")
             break
         
         else:
             
             print("Task not found! Enter a valid task number.")
+            print("\n")
     
     with open("tasksfile.txt", "w") as f:
         
@@ -120,12 +132,14 @@ def delete_task(tasks): # Function to delete a task.
 def filter_tasks(tasks):  # Function to filter tasks based on priority and status.
 
     ch = input("Select filter (Priority/Status): ")
+    print("\n")
 
     if ch.lower() == "priority":
         
         found = 0 
         
         priority = input("Enter the priority to filter (High/Medium/Low): ") # Ask user for priority to filter.
+        print("\n")
 
         for i in tasks:
             
@@ -143,10 +157,12 @@ def filter_tasks(tasks):  # Function to filter tasks based on priority and statu
         if found == 0:
             
             print("No tasks available with the priority", priority)
+            print("\n")
 
     elif ch.lower() == "status":
         
         status = input("Enter the status to filter (Done/Pending): ")
+        print("\n")
         
         found = 0  
 
@@ -168,6 +184,7 @@ def filter_tasks(tasks):  # Function to filter tasks based on priority and statu
             if found == 0:
                 
                 print("No tasks available with the status 'Done'.")
+                print("\n")
 
         elif status.lower() == "pending":
             
@@ -187,19 +204,23 @@ def filter_tasks(tasks):  # Function to filter tasks based on priority and statu
             if found == 0:
                 
                 print("No tasks available with the status 'Pending'.")
+                print("\n")
 
         else:
             
             print("Invalid status! Please enter 'Done' or 'Pending'.")
+            print("\n")
 
     else:
         
         print("Invalid filter! Please enter 'Priority' or 'Status'.")
+        print("\n")
 
 
 def task_update(tasks):  # Function to update an existing task.
     
     task_number = int(input("Enter the task number to update: "))
+    print("\n")
     
     found = False
 
@@ -214,14 +235,17 @@ def task_update(tasks):  # Function to update an existing task.
             print("2. Description:", task["Task_description"])
             print("3. Due Date:", task["Task_duedate"])
             print("4. Priority:", task["Task_priority"])
+            print("\n")
             
             # Ask what the user wants to update.
             
             print("Enter new values (or press Enter to keep the same):")
+            print("\n")
             new_name = input("New Task Name: ")
             new_description = input("New Description: ")
             new_duedate = input("New Due Date (YYYY-MM-DD): ")
             new_priority = input("New Priority (High/Medium/Low): ")
+            print("\n")
 
             if new_name:
                 
@@ -240,11 +264,13 @@ def task_update(tasks):  # Function to update an existing task.
                 task["Task_priority"] = new_priority
 
             print("Task updated successfully!")
+            print("\n")
             break
 
     if not found:
         
         print("Task not found! Enter a valid task number.")
+        print("\n")
         return
 
     with open("tasksfile.txt", "w") as f:     # Write the updated tasks list back to the file
@@ -295,7 +321,9 @@ def main(): # Main function to run the To-Do List App.
         while True:
             
             print("Welcome to the To-Do List App!")
+            print("\n")
             print("Select operation to continue:")
+            print("\n")
             print("1. Create Task")
             print("2. View Tasks")
             print("3. Mark Task as Completed")
@@ -303,8 +331,10 @@ def main(): # Main function to run the To-Do List App.
             print("5. Filter Tasks")
             print("6. Update Task")
             print("7. Exit")
+            print("\n")
             
             choice = input("Enter choice (1/2/3/4/5/6): ")
+            print("\n")
             
             if choice == '1':
                 
@@ -333,12 +363,14 @@ def main(): # Main function to run the To-Do List App.
             elif choice == '7':
                 
                 print("Thank you for using the To-Do List App!")
+                print("\n")
                 print("Goodbye!")
                 break # Exit the loop and end the program.
                 
             else:
                
                 print("Invalid Choice! Please select a valid operation.")
+                print("\n")
 
 if __name__ == "__main__": # Check if the script is being run directly.
    
